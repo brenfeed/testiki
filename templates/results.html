@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты теста</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Результаты теста</h1>
+        <h2>Ваш балл: {{ score }} из {{ total }}</h2>
+
+        <div class="all-answers">
+            <h3>Детализация ответов:</h3>
+            {% for item in all_questions %}
+            <div class="question {{ item.status }}">
+                <p><strong>Вопрос:</strong> {{ item.question }}</p>
+
+                {% if item.status == 'correct' %}
+                    <p class="correct-answer"><strong>Ваш ответ:</strong>
+                        {{ item.user_answers|join('; ') }}
+                    </p>
+                    <p><strong>Правильный ответ:</strong>
+                        {{ item.correct_answers|join('; ') }}
+                    </p>
+
+                {% elif item.status == 'incorrect' %}
+                    <p class="incorrect-answer"><strong>Ваш ответ:</strong>
+                        {{ item.user_answers|join('; ') }}
+                    </p>
+                    <p class="correct-answer"><strong>Правильный ответ:</strong>
+                        {{ item.correct_answers|join('; ') }}
+                    </p>
+
+                {% else %}
+                    <p class="no-answer"><strong>Вы не ответили на этот вопрос</strong></p>
+                    <p class="correct-answer"><strong>Правильный ответ:</strong>
+                        {{ item.correct_answers|join('; ') }}
+                    </p>
+                {% endif %}
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+
+        <a href="/" class="retry-button">Пройти тест снова</a>
+    </div>
+</body>
+</html>

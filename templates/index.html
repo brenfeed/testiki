@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Начало теста</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Тестирование</h1>
+        <form action="/start" method="post">
+            <button type="submit">Начать тест</button>
+        </form>
+    </div>
+</body>
+</html>

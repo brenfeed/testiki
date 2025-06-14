@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тест</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Тест (осталось: <span id="timer">40:00</span>)</h1>
+        <form method="post" action="/submit" id="test-form">
+            {% for question in questions %}
+            <div class="question" id="q{{ question.id }}">
+                <h3>{{ loop.index }}. {{ question.question }}</h3>
+                <div class="options">
+                    {% if question.type == 'single' %}
+                        {% for option in question.options %}
+                        <label>
+                            <input type="radio" name="q{{ question.id }}" value="{{ loop.index0 }}">
+                            {{ option }}
+                        </label><br>
+                        {% endfor %}
+                    {% else %}
+                        {% for option in question.options %}
+                        <label>
+                            <input type="checkbox" name="q{{ question.id }}" value="{{ loop.index0 }}">
+                            {{ option }}
+                        </label><br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            <button type="submit">Завершить тест</button>
+        </form>
+    </div>
+
+    <script>
+        let timeLeft = 40 * 60;
+        const timer = document.getElementById('timer');
+        const form = document.getElementById('test-form');
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timer.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            if (timeLeft <= 0) {
+                form.submit();
+            } else {
+                timeLeft--;
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+    <!-- В test.html добавьте временный вывод -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("Form fields:",
+            Array.from(document.querySelectorAll('input')).map(i => i.name)
+        );
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.question {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.options {
+    margin-left: 20px;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.wrong-answers {
+    margin-top: 30px;
+}
+
+.wrong-answers .question {
+    background-color: #ffe6e6;
+    margin-bottom: 15px;
+}
+/* Добавьте эти стили в конец файла */
+
+.user-answer {
+    color: #d9534f; /* Красный для неправильных ответов */
+}
+
+
+.no-answer {
+    color: #f0ad4e; /* Оранжевый для пропущенных вопросов */
+}
+
+.success {
+    color: #5cb85c;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.retry-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #337ab7;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.retry-button:hover {
+    background: #286090;
+}
+
+.question {
+    margin-bottom: 25px;
+}
+/* Добавьте в конец файла */
+
+.all-answers .question {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.question.correct {
+    background-color: #e6ffe6; /* Зеленый фон для правильных */
+    border: 1px solid #5cb85c;
+}
+
+.question.incorrect {
+    background-color: #ffe6e6; /* Красный фон для неправильных */
+    border: 1px solid #d9534f;
+}
+
+.question.unanswered {
+    background-color: #fff3e6; /* Оранжевый фон для пропущенных */
+    border: 1px solid #f0ad4e;
+}
+
+
+.incorrect-answer {
+    color: #d9534f; /* Красный для неправильных ответов */
+}
+
+.no-answer {
+    color: #f0ad4e; /* Оранжевый для пропущенных вопросов */
+}
+
+.success-message {
+    color: #5cb85c;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 15px 0;
+}
